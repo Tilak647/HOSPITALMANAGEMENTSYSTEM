@@ -1,18 +1,18 @@
-// ==========================
-// FILE : HospitalController.java
-// ==========================
 
 public class HospitalController {
 
     private Patient model;
     private HospitalView view;
 
-    public HospitalController(
-            Patient model,
-            HospitalView view) {
+    public HospitalController(Patient model,
+    HospitalView view) {
 
         this.model = model;
         this.view = view;
+    }
+
+    public void setPatientId(int id) {
+        model.setId(id);
     }
 
     public void setPatientName(String name) {
@@ -23,17 +23,34 @@ public class HospitalController {
         model.setAge(age);
     }
 
-    public void setDisease(String disease) {
+    public void setPatientDisease(String disease) {
         model.setDisease(disease);
     }
 
+    public int getPatientId() {
+        return model.getId();
+    }
+
+    public String getPatientName() {
+        return model.getName();
+    }
+
+    public int getPatientAge() {
+        return model.getAge();
+    }
+
+    public String getPatientDisease() {
+        return model.getDisease();
+    }
+
+    
     public void updateView() {
 
         view.displayPatient(
-            model.getId(),
-            model.getName(),
-            model.getAge(),
-            model.getDisease()
+                model.getId(),
+                model.getName(),
+                model.getAge(),
+                model.getDisease()
         );
     }
 }

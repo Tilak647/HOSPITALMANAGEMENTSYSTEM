@@ -1,14 +1,11 @@
-// ==========================
-// FILE : PatientDAO.java
-// ==========================
-
 import java.sql.Connection;
 import java.sql.PreparedStatement;
 import java.sql.ResultSet;
+import java.util.Scanner;
 
 public class PatientDAO {
 
-    // INSERT DATA
+    // CREATE
     public void addPatient(Patient p) {
 
         try {
@@ -39,7 +36,7 @@ public class PatientDAO {
         }
     }
 
-    // DISPLAY DATA
+    // READ
     public void viewPatients() {
 
         try {
@@ -63,6 +60,72 @@ public class PatientDAO {
                     rs.getInt("age") + " | " +
                     rs.getString("disease")
                 );
+            }
+
+            con.close();
+
+        } catch(Exception e) {
+            System.out.println(e);
+        }
+    }
+
+    // UPDATE
+    public void updatePatient(int id, String name,
+                              int age, String disease) {
+
+        try {
+
+            Connection con = DBConnection.getConnection();
+
+            String sql =
+                "UPDATE patients SET name=?, age=?, disease=? WHERE id=?";
+
+            PreparedStatement pst =
+                con.prepareStatement(sql);
+
+            pst.setString(1, name);
+            pst.setInt(2, age);
+            pst.setString(3, disease);
+            pst.setInt(4, id);
+
+            int rows = pst.executeUpdate();
+
+            if(rows > 0) {
+                System.out.println("Patient Updated Successfully");
+            }
+            else {
+                System.out.println("Patient ID Not Found");
+            }
+
+            con.close();
+
+        } catch(Exception e) {
+            System.out.println(e);
+        }
+    }
+
+    // DELETE
+    public void deletePatient(int id) {
+
+        try {
+
+            Connection con = DBConnection.getConnection();
+
+            String sql =
+                "DELETE FROM patients WHERE id=?";
+
+            PreparedStatement pst =
+                con.prepareStatement(sql);
+
+            pst.setInt(1, id);
+
+            int rows = pst.executeUpdate();
+
+            if(rows > 0) {
+                System.out.println("Patient Deleted Successfully");
+            }
+            else {
+                System.out.println("Patient ID Not Found");
             }
 
             con.close();

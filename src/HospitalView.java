@@ -1,16 +1,13 @@
-// ==========================
-// FILE : HospitalView.java
-// ==========================
 
 public class HospitalView {
 
-    public void displayPatient(
-            int id,
-            String name,
-            int age,
-            String disease) {
+    // DISPLAY PATIENT DETAILS
+    public void displayPatient(int id,
+    String name,
+    int age,
+    String disease) {
 
-        System.out.println("\n===== Patient Details =====");
+        System.out.println("\n===== PATIENT DETAILS =====");
 
         System.out.println("Patient ID : " + id);
         System.out.println("Patient Name : " + name);
@@ -18,7 +15,9 @@ public class HospitalView {
         System.out.println("Disease : " + disease);
     }
 
+    // DISPLAY MESSAGE
     public void showMessage(String message) {
+
         System.out.println(message);
     }
 }

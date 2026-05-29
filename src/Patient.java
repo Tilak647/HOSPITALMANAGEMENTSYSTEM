@@ -1,6 +1,3 @@
-// ==========================
-// FILE : Patient.java
-// ==========================
 
 public class Patient {
 
@@ -9,7 +6,11 @@ public class Patient {
     private int age;
     private String disease;
 
-    public Patient(int id, String name, int age, String disease) {
+    // CONSTRUCTOR
+    public Patient(int id,
+    String name,
+    int age,
+    String disease) {
 
         this.id = id;
         this.name = name;
@@ -17,6 +18,7 @@ public class Patient {
         this.disease = disease;
     }
 
+    // GETTERS
     public int getId() {
         return id;
     }
@@ -31,6 +33,11 @@ public class Patient {
 
     public String getDisease() {
         return disease;
+    }
+
+    // SETTERS
+    public void setId(int id) {
+        this.id = id;
     }
 
     public void setName(String name) {
