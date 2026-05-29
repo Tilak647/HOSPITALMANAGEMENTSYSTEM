@@ -1,3 +1,7 @@
+// ==========================
+// FILE : Main.java
+// ==========================
+
 import java.util.Scanner;
 
 public class Main {
@@ -5,6 +9,8 @@ public class Main {
     public static void main(String[] args) {
 
         Scanner sc = new Scanner(System.in);
+
+        System.out.println("===== HOSPITAL MANAGEMENT SYSTEM =====");
 
         System.out.print("Enter Patient ID : ");
         int id = sc.nextInt();
@@ -22,33 +28,26 @@ public class Main {
         System.out.print("Enter Disease : ");
         String disease = sc.nextLine();
 
-        Patient patient = new Patient(id, name, age, disease);
+        // CREATE PATIENT OBJECT
+        Patient patient =
+            new Patient(id, name, age, disease);
 
+        // MVC
         HospitalView view = new HospitalView();
 
         HospitalController controller =
-                new HospitalController(patient, view);
+            new HospitalController(patient, view);
 
+        // DISPLAY DATA
         controller.updateView();
 
-        System.out.println("\n--- Update Patient Details ---");
+        // DATABASE INSERT
+        PatientDAO dao = new PatientDAO();
 
-        System.out.print("Enter New Name : ");
-        String newName = sc.nextLine();
+        dao.addPatient(patient);
 
-        System.out.print("Enter New Age : ");
-        int newAge = sc.nextInt();
-
-        sc.nextLine();
-
-        System.out.print("Enter New Disease : ");
-        String newDisease = sc.nextLine();
-
-        controller.setPatientName(newName);
-        controller.setPatientAge(newAge);
-        controller.setDisease(newDisease);
-
-        controller.updateView();
+        // VIEW ALL PATIENTS
+        dao.viewPatients();
 
         sc.close();
     }

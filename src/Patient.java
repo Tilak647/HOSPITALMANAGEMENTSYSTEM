@@ -1,4 +1,6 @@
-
+// ==========================
+// FILE : Patient.java
+// ==========================
 
 public class Patient {
 
@@ -7,8 +9,8 @@ public class Patient {
     private int age;
     private String disease;
 
-    // Constructor
     public Patient(int id, String name, int age, String disease) {
+
         this.id = id;
         this.name = name;
         this.age = age;
